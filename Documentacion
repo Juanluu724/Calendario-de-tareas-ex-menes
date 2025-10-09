@@ -1,0 +1,130 @@
+Briefing del Proyecto Intermodular 2025-2026
+Aplicación para la gestión de tareas y exámenes del profesorado
+1. Contexto y justificación
+En los centros educativos actuales, la coordinación entre el profesorado es un aspecto esencial para garantizar una buena planificación del curso académico. Sin embargo, en muchos casos la organización de tareas, exámenes, reuniones y reservas de espacios se realiza de manera dispersa: correos electrónicos, notas personales o aplicaciones individuales no conectadas entre sí.
+Esta falta de centralización provoca problemas como solapamientos de exámenes, falta de comunicación entre departamentos y pérdida de tiempo al intentar coordinar eventos comunes. A partir de esta necesidad detectada, surge la idea de desarrollar una aplicación web y móvil que permita a los docentes gestionar su calendario académico, crear y compartir tareas o exámenes, y recibir notificaciones automáticas según sus preferencias.
+El proyecto se plantea dentro del ámbito intermodular de 2.º de DAM/DAW, con el objetivo de integrar conocimientos de desarrollo backend, frontend, bases de datos y gestión de proyectos bajo metodología Scrum, fomentando el trabajo colaborativo entre distintas áreas del desarrollo de software.
+
+2. Objetivos del proyecto
+El propósito general del proyecto es diseñar y desarrollar una aplicación integral de gestión de tareas y exámenes para el profesorado, accesible desde cualquier dispositivo y sincronizada mediante correo institucional.
+Los objetivos específicos son los siguientes:
+Permitir al profesorado crear, modificar y eliminar tareas o exámenes con fecha de inicio y fin.
+
+
+Incorporar un calendario perpetuo que permite visualizar las actividades pasadas, presentes y futuras.
+
+
+Ofrecer la posibilidad de compartir eventos con otros docentes mediante su correo institucional, gestionando permisos de lectura o edición.
+
+
+Permitir añadir notas, enlaces a documentos externos (Google Drive, Google Meet) o ubicaciones (Google Maps) asociadas a cada evento.
+
+
+Implementar un sistema de notificaciones automáticas que avise al usuario con 48 y 24 horas de antelación, y que pueda personalizarse según las preferencias del usuario.
+
+
+
+Proporcionar una interfaz sencilla, moderna y accesible, optimizada para dispositivos móviles y ordenadores.
+
+
+
+3. Público objetivo
+El proyecto está dirigido principalmente al profesorado y personal administrativo de centros educativos.
+Cada usuario accederá mediante su correo institucional y dispondrá de una agenda personal sincronizada, pudiendo ver el calendario general del centro o el de otros docentes con los que tenga permisos compartidos.
+
+4. Propuesta de solución
+La solución propuesta consiste en una aplicación web progresiva (PWA) que funcione tanto en navegador como en dispositivos móviles. Esta app permitirá al profesorado gestionar de forma centralizada todas sus tareas, reuniones y exámenes en un entorno intuitivo, colaborativo y conectado con las herramientas que ya utiliza habitualmente (correo, Drive, Meet, Maps).
+El sistema permitirá:
+Visualizar el calendario de manera mensual, semanal o diaria.
+
+
+Añadir nuevas tareas indicando título, descripción, fechas, ubicación y adjuntos.
+
+
+Compartir eventos con otros usuarios mediante su correo.
+
+
+Recibir notificaciones automáticas y recordatorios previos a la fecha del evento.
+
+
+Consultar el calendario de otro profesor si se le ha concedido permiso.
+
+
+Vincular enlaces externos y adjuntar archivos relacionados.
+
+
+La aplicación ofrecerá así una experiencia completa de organización académica, reduciendo errores y mejorando la comunicación entre docentes.
+
+5. Tecnologías y arquitectura
+El proyecto se desarrollará utilizando tecnologías actuales y adecuadas para un entorno educativo:
+Frontend:
+ Se empleará Angular, que permite crear interfaces dinámicas, modulares y responsivas. Se utilizarán componentes reutilizables para vistas del calendario, formularios de eventos y gestión de usuarios.
+
+
+Backend:
+ Se plantean dos posibles alternativas según el enfoque del equipo:
+
+
+Spring Boot (Java), aprovechando los conocimientos de los alumnos de DAM.
+
+
+Node.js con Express, más orientado a DAW, para crear una API REST ligera y escalable.
+
+
+Base de datos:
+ MySQL  encargada de almacenar usuarios, eventos, permisos y notificaciones. Se definirán relaciones entre tablas para garantizar la integridad de los datos (claves foráneas, restricciones, cascadas de borrado, etc.).
+
+
+Integraciones externas:
+ Google Drive, Google Maps y Google Meet, inicialmente mediante enlaces, con posibilidad de integración futura vía API.
+
+
+Despliegue:
+ Se empleará GitHub Actions para automatizar el despliegue continuo en una sandbox o dominio de pruebas. La aplicación final se ejecutará en contenedores Docker, garantizando portabilidad y compatibilidad entre entornos.
+
+
+
+6. Metodología de trabajo
+El desarrollo seguirá la metodología Scrum, con ciclos de trabajo denominados sprints de dos semanas. En cada sprint se realizarán tareas de planificación, desarrollo, pruebas y revisión.
+Los roles principales serán:
+Scrum Master: Profesor responsable de coordinar el equipo (Willman / Carlos).
+
+
+Product Owner: Alumno responsable de definir las prioridades del sprint.
+
+
+Equipo de desarrollo: Alumnos de DAM (backend y lógica) y DAW (frontend y diseño).
+
+
+Se celebrarán reuniones semanales para evaluar el progreso, revisar los objetivos cumplidos y planificar las siguientes etapas.
+
+7. Cronograma general
+El proyecto se desarrollará durante el curso 2025-2026, siguiendo esta línea temporal aproximada:
+Semana 09/10/225
+Planificación de wireframe y MR.
+Semana 13/10/25
+Entrega de documentación, wireframe y mr
+
+
+
+8. Resultados esperados
+Al finalizar el proyecto, se espera contar con un MVP completamente funcional, accesible desde navegador o dispositivo móvil, que permita al profesorado:
+Gestionar sus tareas y exámenes desde una única aplicación.
+
+
+Coordinarse con otros docentes de manera colaborativa.
+
+
+Recibir notificaciones automáticas.
+
+
+Visualizar el calendario académico global del centro.
+
+
+Además, el proyecto servirá como ejemplo práctico de integración de tecnologías web modernas, bases de datos relacionales, APIs REST y metodologías ágiles, fortaleciendo las competencias profesionales del alumnado participante.
+
+9. Conclusión
+Este proyecto busca dar respuesta a una necesidad real del entorno educativo, mejorando la organización interna y la eficiencia del profesorado mediante el uso de la tecnología.
+El desarrollo de esta aplicación representa un ejercicio completo de trabajo en equipo, planificación ágil y aplicación de los conocimientos adquiridos en los distintos módulos del ciclo, preparando al alumnado para afrontar proyectos reales en entornos profesionales.
+
+
