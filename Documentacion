@@ -1,130 +1,375 @@
-Briefing del Proyecto Intermodular 2025-2026
-Aplicación para la gestión de tareas y exámenes del profesorado
-1. Contexto y justificación
-En los centros educativos actuales, la coordinación entre el profesorado es un aspecto esencial para garantizar una buena planificación del curso académico. Sin embargo, en muchos casos la organización de tareas, exámenes, reuniones y reservas de espacios se realiza de manera dispersa: correos electrónicos, notas personales o aplicaciones individuales no conectadas entre sí.
-Esta falta de centralización provoca problemas como solapamientos de exámenes, falta de comunicación entre departamentos y pérdida de tiempo al intentar coordinar eventos comunes. A partir de esta necesidad detectada, surge la idea de desarrollar una aplicación web y móvil que permita a los docentes gestionar su calendario académico, crear y compartir tareas o exámenes, y recibir notificaciones automáticas según sus preferencias.
-El proyecto se plantea dentro del ámbito intermodular de 2.º de DAM/DAW, con el objetivo de integrar conocimientos de desarrollo backend, frontend, bases de datos y gestión de proyectos bajo metodología Scrum, fomentando el trabajo colaborativo entre distintas áreas del desarrollo de software.
-
-2. Objetivos del proyecto
-El propósito general del proyecto es diseñar y desarrollar una aplicación integral de gestión de tareas y exámenes para el profesorado, accesible desde cualquier dispositivo y sincronizada mediante correo institucional.
-Los objetivos específicos son los siguientes:
-Permitir al profesorado crear, modificar y eliminar tareas o exámenes con fecha de inicio y fin.
 
 
-Incorporar un calendario perpetuo que permite visualizar las actividades pasadas, presentes y futuras.
+Proyecto Intermodular
+Calendario de Tareas/Exámenes para Profesores
 
 
-Ofrecer la posibilidad de compartir eventos con otros docentes mediante su correo institucional, gestionando permisos de lectura o edición.
+Índice
+
+1. Introducción	2
+1.1 Idea general del proyecto	2
+1.2 Contexto y justificación	2
+1.3 Definición del problema	3
+1.4 Objetivos del trabajo	3
+Objetivo general	3
+Objetivos específicos	3
+2. Marco Teórico	4
+2.1 Tecnologías utilizadas	4
+a) Frontend	4
+b) Backend	5
+c) Base de datos	5
+d) Comunicación	5
+e) Seguridad	5
+f) Control de versiones	5
+2.2 Conceptos clave	6
+a) Arquitectura cliente-servidor	6
+b) API REST y formato JSON	6
+c) Metodología ágil Scrum	7
+d) Seguridad y autenticación	7
+e) Integración con servicios externos	7
+2.3 Estado del arte	7
+3. Marco Metodológico	8
+3.1 Metodología de desarrollo	8
+3.2 Herramientas	9
+3.3 Proceso de desarrollo	9
+a) Fases del proceso	9
+b) Sprints	10
+3.4 Cronograma	11
+3.5 Presupuesto	13
 
 
-Permitir añadir notas, enlaces a documentos externos (Google Drive, Google Meet) o ubicaciones (Google Maps) asociadas a cada evento.
+1. Introducción
+1.1 Idea general del proyecto
+El proyecto consiste en el desarrollo de una aplicación web y móvil orientada a la gestión de tareas, exámenes y eventos académicos del profesorado.
+Su principal objetivo es mejorar la planificación, coordinación y comunicación interna entre los docentes de un mismo centro educativo, ofreciendo una herramienta unificada, moderna y accesible desde cualquier dispositivo.
+La aplicación permitirá a los profesores crear, modificar y eliminar tareas o exámenes, asignar fechas de inicio y fin, añadir recordatorios personalizados y compartir eventos con otros usuarios del centro mediante su correo institucional.
+Además, integrará recursos externos como Google Drive, Google Meet o Google Maps, lo que permitirá vincular materiales, reuniones o ubicaciones a cada evento, facilitando la organización de la actividad docente.
+1.2 Contexto y justificación
+En la actualidad, muchos centros educativos gestionan sus calendarios y actividades mediante métodos dispersos, como correos electrónicos, notas personales o aplicaciones independientes sin conexión entre sí.
+Esta falta de integración provoca solapamientos de exámenes, errores de comunicación y pérdida de tiempo en la coordinación interna del profesorado.
+El proyecto surge como respuesta a esta necesidad real: contar con una plataforma única que centralice toda la información académica relevante en una interfaz clara, visual y fácil de usar.
+De esta forma, los docentes podrán consultar su planificación completa, recibir recordatorios automáticos y compartir información con otros compañeros de forma ordenada y segura.
+1.3 Definición del problema
+Actualmente, cada profesor gestiona su planificación de forma individual, utilizando diferentes medios y sin una sincronización común.
+Esto genera varios inconvenientes:
+Duplicidad o solapamiento de exámenes y tareas.
 
 
-Implementar un sistema de notificaciones automáticas que avise al usuario con 48 y 24 horas de antelación, y que pueda personalizarse según las preferencias del usuario.
+Falta de coordinación entre departamentos.
+
+
+Dificultad para acceder a información actualizada.
+
+
+Ausencia de recordatorios automáticos.
+
+
+Por tanto, el problema principal es la carencia de una herramienta unificada que coordine eficientemente las tareas y exámenes del profesorado, integrando la planificación, las notificaciones y la colaboración entre usuarios.
+El proyecto propone una solución tecnológica única: un calendario académico inteligente que centralice todas las actividades, automatice los avisos y permita compartir información relevante entre docentes del mismo centro.
+
+1.4 Objetivos del trabajo
+Objetivo general
+Desarrollar una aplicación web y móvil que permita la gestión integral de tareas y exámenes del profesorado, ofreciendo funciones de planificación, notificación y colaboración entre usuarios, con acceso mediante correo institucional y compatibilidad multiplataforma.
+Objetivos específicos
+Permitir la creación, edición y eliminación de tareas o exámenes con fechas de inicio y fin.
+
+
+Habilitar la personalización de notificaciones y alertas previas (48 h y 24 h antes del evento).
+
+
+Facilitar el acceso al calendario propio y de otros usuarios, respetando los niveles de permiso.
+
+
+Posibilitar el compartido de tareas mediante correo institucional.
+
+
+Integrar vinculaciones a documentos y ubicaciones externas (Google Drive, Meet y Maps).
+
+
+Implementar un calendario perpetuo con visualización por día, semana o mes.
+
+
+Favorecer la colaboración docente y la optimización del tiempo de trabajo.
+
+
+Documentar el proceso de desarrollo aplicando metodología ágil Scrum y gestión por sprints.
+
+2. Marco Teórico
+En este apartado se presentan las bases técnicas y conceptuales que sustentan el proyecto.
+Se describen las tecnologías que se van a utilizar, los principios metodológicos aplicados y las referencias existentes en el ámbito educativo que han servido de guía para el desarrollo de la aplicación.
+2.1 Tecnologías utilizadas
+Nuestro proyecto está orientado al desarrollo bajo una arquitectura Full-Stack, combinando tecnologías del lado del cliente (frontend), del servidor (backend) y de la base de datos. Aunque todavía no hemos cerrado de forma definitiva todas las herramientas, esta es la propuesta inicial con la que trabajaremos durante las primeras fases del desarrollo.
+a) Frontend
+En la parte del cliente, nuestra idea es trabajar con Angular, ya que permite crear una interfaz moderna, ordenada y adaptable a distintos dispositivos.
+Con esta herramienta planeamos desarrollar los elementos principales del sistema, como el calendario, los formularios de tareas y los paneles de notificaciones.
+Nos inclinamos por Angular porque facilita la comunicación con el servidor y ofrece una buena experiencia de usuario, aunque no descartamos valorar otras opciones si surgen limitaciones técnicas o de compatibilidad.
+b) Backend
+Para la parte del servidor, tenemos previsto utilizar Node.js, que gestionaría las peticiones del cliente y el acceso a los datos.
+Nuestra intención es crear una API REST que permite realizar operaciones como crear, modificar o eliminar tareas y exámenes.
+Elegimos Node.js por su velocidad y flexibilidad, cualidades muy útiles en un entorno de colaboración entre varios usuarios, aunque seguimos abiertos a otras alternativas si el desarrollo lo requiere.
+c) Base de datos
+En cuanto al almacenamiento de la información, estamos orientando el proyecto hacia MySQL por su fiabilidad y facilidad para trabajar con datos estructurados.
+Diseñaremos un modelo relacional con tablas para usuarios, tareas, exámenes y recordatorios.
+ Sin embargo, no descartamos probar otras bases de datos compatibles con Node.js, en caso de que ofrezcan mayor rendimiento o una integración más sencilla.
+d) Comunicación
+La comunicación entre el frontend y el backend se realizará previsiblemente mediante una API REST, utilizando el formato JSON para intercambiar datos.
+Esta combinación nos parece práctica porque simplifica las peticiones entre las diferentes capas del sistema.
+Aunque es el enfoque principal con el que queremos trabajar, estamos abiertos a adaptarlo si las necesidades del proyecto cambian.
+e) Seguridad
+En materia de seguridad, nuestra orientación inicial es implementar JSON Web Tokens (JWT) para la autenticación de usuarios.
+Este sistema nos permitirá controlar el acceso y proteger la información de forma sencilla.
+Aun así, analizaremos otras opciones de seguridad si se detectan mejoras posibles durante el desarrollo.
+f) Control de versiones
+Para la gestión del código y la colaboración en equipo, Git y GitHub serán las herramientas principales.
+Cada integrante trabajará en ramas separadas y los cambios se unirán tras una revisión en cada sprint.
+Aunque esta es la opción más práctica y accesible para nuestro equipo, no descartamos usar otras plataformas o flujos de trabajo si el proyecto lo requiere.
+
+2.2 Conceptos clave
+El desarrollo de nuestro proyecto se basa en una serie de conceptos técnicos y metodológicos que servirán como guía durante todo el proceso. Por ahora, nos orientamos hacia estas tecnologías y enfoques porque creemos que se adaptan bien a los objetivos del sistema, aunque no descartamos realizar cambios si durante el desarrollo surgen nuevas necesidades o mejoras.
+a) Arquitectura cliente-servidor
+Nuestra idea es estructurar la aplicación bajo una arquitectura cliente-servidor, donde el cliente, desarrollado con Angular, gestione la parte visual y la interacción con el usuario, mientras que Node.js actúe como servidor, procesando las peticiones y conectándose con la base de datos MySQL.
+Este modelo nos parece adecuado porque facilita el mantenimiento, la organización y la escalabilidad del sistema, algo fundamental para crear una herramienta práctica y colaborativa para el profesorado.
+Aun así, seguiremos evaluando esta estructura conforme avancemos en el proyecto, por si fuera necesario ajustar o complementar la arquitectura.
+b) API REST y formato JSON
+Nos orientamos hacia el uso de una API RESTful para conectar el cliente con el servidor, utilizando JSON como formato de intercambio de datos.
+Esta opción nos parece ligera, rápida y fácil de integrar, ya que permite que la información sobre tareas, exámenes y notificaciones se sincronice entre los distintos usuarios.
+No obstante, mantendremos la posibilidad de probar otras alternativas si descubrimos métodos más eficientes o mejor adaptados a las funcionalidades del sistema.
 
 
 
-Proporcionar una interfaz sencilla, moderna y accesible, optimizada para dispositivos móviles y ordenadores.
+
+
+c) Metodología ágil Scrum
+Tenemos previsto seguir la metodología Scrum, organizando el trabajo en sprints de dos semanas.
+Este método nos ayuda a planificar, revisar y mejorar continuamente, dividiendo el proyecto en partes pequeñas y alcanzables.
+En cada sprint nos centraremos en tareas concretas, como el calendario, las notificaciones o la integración con servicios externos.
+
+
+d) Seguridad y autenticación
+Nuestra intención es implementar un sistema de autenticación mediante tokens JWT (JSON Web Token) para proteger los datos de los usuarios.
+Creemos que este método ofrece un equilibrio entre seguridad y simplicidad, ya que permite identificar a los usuarios sin complicar su acceso a la aplicación.
+De todas formas, evaluaremos otras opciones si detectamos que el sistema necesita un nivel de protección distinto o medidas adicionales de seguridad.
+e) Integración con servicios externos
+Nos gustaría que la aplicación se integrará con herramientas externas como Google Drive, Google Meet y Google Maps, lo que permitiría añadir documentos, enlaces de reunión o ubicaciones directamente desde la app.
+Pensamos que esta integración puede mejorar mucho la organización del profesorado y centralizar la información en un solo espacio digital.
+Sin embargo, todavía debemos comprobar la viabilidad técnica y el alcance real de estas integraciones antes de confirmarlas en la versión final del proyecto.
+2.3 Estado del arte
+Con el fin de establecer un punto de referencia y analizar soluciones existentes, se han estudiado diferentes aplicaciones de gestión académica y planificación personal.
+Aplicación
+Puntos fuertes
+Puntos débiles
+Google Calendar
+Integración con Gmail, Drive y Meet; notificaciones automáticas.
+No gestiona permisos ni coordinación entre docentes.
+Microsoft Teams
+Comunicación y calendario compartido por equipos.
+Interfaz compleja, dependiente del ecosistema Microsoft.
+ClassDojo
+Interfaz visual sencilla y atractiva.
+Limitada a niveles educativos básicos, sin gestión de exámenes.
+
+De este análisis se concluye que, aunque existen herramientas potentes, ninguna ofrece una solución específica que combine colaboración docente, gestión de exámenes y vinculación directa con recursos externos.
+Nuestro proyecto busca cubrir precisamente esa necesidad, unificando simplicidad, comunicación y eficiencia.
+3. Marco Metodológico
+En este apartado se explica cómo se va a desarrollar el proyecto, tanto desde el punto de vista técnico como organizativo.
+Se detallan la metodología seleccionada, las herramientas utilizadas y el proceso de trabajo previsto desde la planificación hasta la implementación final.
+
+3.1 Metodología de desarrollo
+El proyecto se llevará a cabo aplicando la metodología ágil Scrum, ya que se adapta bien a entornos de desarrollo educativo y permite una mejora continua del producto.
+Scrum divide el trabajo en sprints de dos semanas, con entregables parciales y revisiones constantes.
+El uso de Scrum permitirá gestionar el proyecto de forma ágil, distribuir las tareas equitativamente y mantener una comunicación continua entre los miembros.
+
+
+3.2 Herramientas
+Durante el desarrollo se emplearán distintas herramientas que facilitarán la programación, el control de versiones y la organización del trabajo:
+Visual Studio Code: entorno principal para el desarrollo de la interfaz y el backend.
+
+
+MySQL: diseño y gestión del modelo relacional de la base de datos.
+
+
+Git y GitHub: control de versiones y almacenamiento del código en un repositorio común.
+
+
+Google Chat: canal interno de comunicación y planificación de tareas.
+
+
+Postman: herramienta de prueba para comprobar las peticiones y respuestas de la API.
+
+
+Canva: diseño del wireframe, mockup y elementos visuales.
+
+
+Google Drive: almacenamiento compartido de documentación, informes y presentaciones.
+
+
+Estas herramientas garantizan un flujo de trabajo ordenado, colaborativo y fácilmente supervisable por los tutores.
+
+3.3 Proceso de desarrollo
+El desarrollo del proyecto seguirá la metodología ágil Scrum, dividiendo el trabajo en sprints de dos semanas.
+Cada sprint incluirá las fases de planificación, desarrollo, revisión y retrospectiva, garantizando una evolución constante y una buena coordinación entre los miembros del equipo.
+Fases del proceso
+El desarrollo se llevará a cabo bajo la metodología ágil Scrum, estructurada en 7 sprints de dos semanas. Cada sprint incluye planificación, desarrollo, revisión y retrospectiva, permitiendo una evolución progresiva y un producto funcional desde etapas tempranas.
+Además, cada miércoles el equipo presentará algún avance o entrega parcial, para mantener el ritmo y comprobar que todo va por buen camino.
+Sprints
+Sprint 1 – Documentación y planificación del proyecto
+
+
+Redacción de la Introducción, Marco Teórico y Marco Metodológico.
+
+
+Definición de los objetivos.
+
+
+Creación del repositorio GitHub y organización de carpetas.
+
+
+Planificación global del proyecto y elección de las herramientas principales.
+
+
+Sprint 2 – Diseño del modelo relacional y wireframe/mockup
+
+
+Elaboración del modelo entidad-relación (ERD) y definición de las tablas principales (usuarios, tareas, exámenes, recordatorios…).
+
+
+Creación del wireframe y del mockup prototipado en Canva o Figma.
+
+
+Validación del diseño con los tutores y ajustes previos al desarrollo.
+
+
+Sprint 3 – Configuración del entorno y backend base
+
+
+Instalación y configuración de Node.js y Express.js.
+
+
+Creación de la estructura del servidor y de los primeros endpoints REST.
+
+
+Conexión con la base de datos MySQL y pruebas iniciales con Postman.
+
+
+Sprint 4 – Desarrollo del backend avanzado y autenticación
+
+
+Implementación completa de la API REST (CRUD de tareas, exámenes y usuarios).
+
+
+Incorporación del sistema de autenticación JWT y control de roles y permisos.
+
+
+Validaciones de datos y gestión de errores.
+
+
+Sprint 5 – Desarrollo del frontend y conexión con la API
+
+
+Implementación de la interfaz con Angular.
+
+
+Comunicación cliente-servidor mediante HTTP + JSON.
+
+
+Creación de componentes: calendario, panel de tareas y notificaciones.
+
+
+Sprint 6 – Integraciones externas y pruebas
+
+
+Integración de Google Drive, Meet y Maps.
+
+
+Implementación de recordatorios automáticos (48h y 24h antes).
+
+
+Pruebas funcionales, de integración y revisión de código en GitHub.
+
+
+Sprint 7 – Despliegue, documentación final y defensa
+
+
+Preparación del entorno de producción (sandbox / Vercel / GitHub Pages).
+
+
+Elaboración de la documentación técnica y manual de usuario.
+
+
+Ensayo y defensa final del proyecto.
+
+
+Revisión general con tutores y cierre de sprint final.
 
 
 
-3. Público objetivo
-El proyecto está dirigido principalmente al profesorado y personal administrativo de centros educativos.
-Cada usuario accederá mediante su correo institucional y dispondrá de una agenda personal sincronizada, pudiendo ver el calendario general del centro o el de otros docentes con los que tenga permisos compartidos.
 
-4. Propuesta de solución
-La solución propuesta consiste en una aplicación web progresiva (PWA) que funcione tanto en navegador como en dispositivos móviles. Esta app permitirá al profesorado gestionar de forma centralizada todas sus tareas, reuniones y exámenes en un entorno intuitivo, colaborativo y conectado con las herramientas que ya utiliza habitualmente (correo, Drive, Meet, Maps).
-El sistema permitirá:
-Visualizar el calendario de manera mensual, semanal o diaria.
+3.4 Cronograma
 
-
-Añadir nuevas tareas indicando título, descripción, fechas, ubicación y adjuntos.
-
-
-Compartir eventos con otros usuarios mediante su correo.
-
-
-Recibir notificaciones automáticas y recordatorios previos a la fecha del evento.
-
-
-Consultar el calendario de otro profesor si se le ha concedido permiso.
-
-
-Vincular enlaces externos y adjuntar archivos relacionados.
+Sprint / Fase
+Periodo estimado
+Objetivos principales
+Responsables
+Sprint 1 – Documentación inicial
+12/09 – 26/10/2025
+Redacción de la documentación base (Introducción, Marco Teórico y Metodológico). Creación del repositorio y roles del equipo.
+Todo el equipo
+Sprint 2 – Diseño técnico y visual
+27/10 – 10/11/2025
+Diseño del modelo relacional (ERD), wireframe y mockup. Validación del diseño.
+Juan Luis y Edu-> mock y wiref
+ale y sergio (erd)
+Sprint 3 – Backend base
+10/11 – 24/11/2025
+Configuración de Node.js y Express, conexión MySQL, primeros endpoints.
 
 
-La aplicación ofrecerá así una experiencia completa de organización académica, reduciendo errores y mejorando la comunicación entre docentes.
-
-5. Tecnologías y arquitectura
-El proyecto se desarrollará utilizando tecnologías actuales y adecuadas para un entorno educativo:
-Frontend:
- Se empleará Angular, que permite crear interfaces dinámicas, modulares y responsivas. Se utilizarán componentes reutilizables para vistas del calendario, formularios de eventos y gestión de usuarios.
+Sprint 4 – Backend avanzado y JWT
+24/11 – 8/12/2025
+API REST completa, autenticación JWT, roles y validaciones.
 
 
-Backend:
- Se plantean dos posibles alternativas según el enfoque del equipo:
+Sprint 5 – Frontend Angular
+8/12 – 22/12/2025
+Creación de la interfaz y comunicación con la API REST.
 
 
-Spring Boot (Java), aprovechando los conocimientos de los alumnos de DAM.
+Sprint 6 – Integraciones y pruebas
+8/01 – 22/01/2025
+Integraciones con Google APIs, pruebas funcionales y de integración.
 
 
-Node.js con Express, más orientado a DAW, para crear una API REST ligera y escalable.
-
-
-Base de datos:
- MySQL  encargada de almacenar usuarios, eventos, permisos y notificaciones. Se definirán relaciones entre tablas para garantizar la integridad de los datos (claves foráneas, restricciones, cascadas de borrado, etc.).
-
-
-Integraciones externas:
- Google Drive, Google Maps y Google Meet, inicialmente mediante enlaces, con posibilidad de integración futura vía API.
-
-
-Despliegue:
- Se empleará GitHub Actions para automatizar el despliegue continuo en una sandbox o dominio de pruebas. La aplicación final se ejecutará en contenedores Docker, garantizando portabilidad y compatibilidad entre entornos.
+Sprint 7 – Despliegue y defensa
+22/01 – 10/02/2025
+Despliegue en sandbox, documentación final, ensayo y defensa del proyecto.
 
 
 
-6. Metodología de trabajo
-El desarrollo seguirá la metodología Scrum, con ciclos de trabajo denominados sprints de dos semanas. En cada sprint se realizarán tareas de planificación, desarrollo, pruebas y revisión.
-Los roles principales serán:
-Scrum Master: Profesor responsable de coordinar el equipo (Willman / Carlos).
-
-
-Product Owner: Alumno responsable de definir las prioridades del sprint.
-
-
-Equipo de desarrollo: Alumnos de DAM (backend y lógica) y DAW (frontend y diseño).
-
-
-Se celebrarán reuniones semanales para evaluar el progreso, revisar los objetivos cumplidos y planificar las siguientes etapas.
-
-7. Cronograma general
-El proyecto se desarrollará durante el curso 2025-2026, siguiendo esta línea temporal aproximada:
-Semana 09/10/225
-Planificación de wireframe y MR.
-Semana 13/10/25
-Entrega de documentación, wireframe y mr
 
 
 
-8. Resultados esperados
-Al finalizar el proyecto, se espera contar con un MVP completamente funcional, accesible desde navegador o dispositivo móvil, que permita al profesorado:
-Gestionar sus tareas y exámenes desde una única aplicación.
+3.6Presupuesto
 
-
-Coordinarse con otros docentes de manera colaborativa.
-
-
-Recibir notificaciones automáticas.
-
-
-Visualizar el calendario académico global del centro.
-
-
-Además, el proyecto servirá como ejemplo práctico de integración de tecnologías web modernas, bases de datos relacionales, APIs REST y metodologías ágiles, fortaleciendo las competencias profesionales del alumnado participante.
-
-9. Conclusión
-Este proyecto busca dar respuesta a una necesidad real del entorno educativo, mejorando la organización interna y la eficiencia del profesorado mediante el uso de la tecnología.
-El desarrollo de esta aplicación representa un ejercicio completo de trabajo en equipo, planificación ágil y aplicación de los conocimientos adquiridos en los distintos módulos del ciclo, preparando al alumnado para afrontar proyectos reales en entornos profesionales.
+Categoría
+Detalle
+Coste estimado (€)
+Costes humanos
+4 desarrolladores (2 DAM + 2 DAW) × 175 h × 20 €/h
+14 000 €
+Software y licencias
+VS Code, Node.js, Angular, MySQL, Canva, GitHub → versiones gratuitas
+0 €
+Infraestructura y despliegue
+Hosting gratuito (Vercel / GitHub Pages) y sandbox educativo
+0 €
+Diseño y documentación
+Creación de wireframe, mockup y memoria técnica con herramientas gratuitas
+0 €
+Gastos operativos
+Conexión a Internet, electricidad y material de apoyo proporcionado por el alumnado
+0 €
+Total estimado del proyecto
+—
+14 000 €
 
 
